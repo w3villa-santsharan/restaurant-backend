@@ -43,7 +43,7 @@ exports.getRestaurantByTime = async (req, res) => {
 exports.getRestaurantByName = async (req, res) => {
   try {
     const { rows } = await client.query(
-      "SELECT * FROM timings WHERE LOWER(name) LIKE $1",
+      "SELECT DISTINCT * FROM timings WHERE name LIKE $1",
       ["%" + req.query.value + "%"]
     );
 
